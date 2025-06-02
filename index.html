@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Productivity Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#121212', // VO-style dark background
+                        secondary: '#1f1f1f',
+                        accent: '#6366f1', // A vibrant accent
+                        card: '#1e1e1e',
+                        text: '#e0e0e0',
+                        input: '#FFF1D5',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-primary text-text font-sans">
+    <div class="min-h-screen w-full">
+        <!-- Navbar -->
+        <nav class="w-full h-16 bg-s-primary top-0 left-0 flex items-center justify-between px-6 shadow-md z-50">
+            <h1 class="text-2xl font-bold tracking-wide">📊 Productivity Dashboard</h1>
+            <button class="bg-accent hover:bg-indigo-500 text-white px-4 py-2 rounded-lg transition duration-300">Change Theme</button>
+        </nav>
+
+        <!-- Weather UI Placeholder -->
+        <div id="wet-ui" class="w-full h-96 pt-40 px-20">
+            <div class="w-full h-full bg-card rounded-xl shadow-inner flex items-center justify-center text-lg text-gray-300">
+                Weather UI Placeholder
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <section class="flex flex-wrap gap-x-20 p-6 pt-10 justify-center">
+            <div id="0"
+                class="custom-card w-80 h-72 rounded-xl overflow-hidden relative shadow-xl shadow-gray-500 shadow-[10px_10px_20px] hover:shadow-[15px_10px_20px] transition-transform duration-200 active:scale-95">
+                <img src="./assest/6ff1420eff13056ec51bca5c8a7dd2bf.jpg" alt=""
+                    class="w-full h-full object-cover opacity-90 hover:opacity-100 transition duration-300">
+                <h2
+                    class="absolute bottom-3 right-4 text-xl font-semibold bg-secondary px-3 py-1 rounded-md bg-opacity-75">to-do-list
+                </h2>
+            </div>
+
+            <div id="1"
+                class="custom-card w-80 h-72 rounded-xl overflow-hidden relative shadow-xl shadow-gray-500 shadow-[10px_10px_20px] hover:shadow-[15px_10px_20px] transition-transform duration-200 active:scale-95">
+                <video autoplay loop muted
+                    class="w-full h-full object-cover pointer-events-none opacity-90 hover:opacity-100 transition duration-300">
+                    <source src="./assest/207982_large.mp4" type="video/mp4">
+                </video>
+                <h2
+                    class="absolute bottom-3 right-4 text-xl font-semibold bg-secondary px-3 py-1 rounded-md bg-opacity-75">Daily
+                    Planner</h2>
+            </div>
+
+            <div id="2"
+                class="custom-card w-80 h-72 rounded-xl overflow-hidden relative shadow-xl shadow-gray-500 shadow-[10px_10px_20px] hover:shadow-[15px_10px_20px] transition-transform duration-200 active:scale-95">
+                <img src="./assest/cd66a86b507296b841af79861c6ff52f.jpg" alt=""
+                    class="w-full h-full object-cover opacity-90 hover:opacity-100 transition duration-300">
+                <h2
+                    class="absolute bottom-3 right-4 text-xl font-semibold bg-secondary px-3 py-1 rounded-md bg-opacity-75">Motivation
+                </h2>
+            </div>
+
+            <div id="3"
+                class="custom-card w-80 h-72 rounded-xl overflow-hidden relative shadow-xl shadow-gray-500 shadow-[10px_10px_20px] hover:shadow-[15px_10px_20px] transition-transform duration-200 active:scale-95">
+                <video autoplay loop muted
+                    class="w-full h-full object-cover pointer-events-none opacity-90 hover:opacity-100 transition duration-300">
+                    <source src="./assest/ce9807b3800d50c23f3ffd16d6c22d70.mp4" type="video/mp4">
+                </video>
+                <h2
+                    class="absolute bottom-3 right-4 text-xl font-semibold bg-secondary px-3 py-1 rounded-md bg-opacity-75">promodoro
+                </h2>
+            </div>
+        </section>
+
+        <!-- inside cards -->
+        <section>
+            <!-- todo --list inside page -->
+            <section class="hidden inside-section bg-primary min-h-screen w-full absolute top-0 left-0">
+                <button id="0"
+                    class="close-btn absolute top-4 right-4 bg-red-500 text-white text-xl px-12 py-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 active:scale-90 active:bg-red-600">Close</button>
+                <h1 class="text-6xl text-gray-300 font-bold">to-do-list</h1>
+                <div class="h-[900px] mt-20 mx-4 my-4 flex gap-10 justify-center">
+                    <div class="w-0.5/2 h-full bg-indigo-200 rounded-xl">
+                        <form class="todo-form p-20 flex flex-col gap-4">
+                            <input type="text" placeholder="Enter your task"
+                                class="todo-form-input w-full h-12 px-4 py-10 rounded-lg bg-input border text-2xl text-black font-bold shadow-xl shadow-gray-500 hover:shadow-lg shadow-gray-500  transition duration-300 active:scale-90">
+                            <textarea name="" id=""
+                                class="todo-form-text w-full h-96 p-4 rounded-lg bg-input border text-4xl text-black font-bold shadow-xl shadow-gray-500 hover:shadow-lg shadow-gray-500  transition duration-300 active:scale-90">
+                            </textarea>
+                            <button
+                                class="todo-form-button w-full h-12 bg-input text-black font-bold text-2xl  shadow-xl shadow-gray-500 hover:shadow-lg
+                                transition duration-300 active:scale-90">Add Task</button>
+                        </form>
+                    </div>
+                    <div class="w-1/2 h-full bg-indigo-200 rounded-xl task-list overflow-auto">
+                    </div>
+                </div>
+            </section>
+            <!-- Daily Planner inside page -->
+            <section class="block inside-section bg-primary min-h-screen w-full absolute top-0 left-0">
+                <button id="1"
+                    class="close-btn absolute top-4 right-4 bg-red-500 text-white text-xl px-12 py-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 active:scale-90 active:bg-red-600">Close</button>
+                <h1 class="text-7xl font-bold">Daily Planner</h1>
+                <div class="h-[calc(100vh-6rem)] w-[calc(100%-1rem)] bg-indigo-500 mt-10 rounded-xl mb-10 ml-4 p-8 flex flex-wrap  justify-between  overflow-auto">
+                    <div class="h-[200px] w-[calc(50%-1rem)] bg-indigo-200 rounded-xl p-4 mb-4">
+                        <h3 class="text-2xl font-bold text-black mb-10">Task Title</h3>
+                        <input type="text" placeholder="Enter task details"
+                            class="w-full h-[75px] px-4 py-2 mt-2 rounded-lg bg-input border text-black font-bold shadow-xl shadow-gray-500 hover:shadow-lg transition duration-300 active:scale-90">
+                    </div>
+                    <div class="h-[200px] w-[calc(50%-1rem)] bg-indigo-200 rounded-xl p-4 mb-4">
+                        <h3 class="text-2xl font-bold text-black mb-10">Task Title</h3>
+                        <input type="text" placeholder="Enter task details"
+                            class="w-full h-[75px] px-4 py-2 mt-2 rounded-lg bg-input border text-black font-bold shadow-xl shadow-gray-500 hover:shadow-lg transition duration-300 active:scale-90">
+                    </div>
+                     <div class="h-[200px] w-[calc(50%-1rem)] bg-indigo-200 rounded-xl p-4 mb-4">
+                        <h3 class="text-2xl font-bold text-black mb-10">Task Title</h3>
+                        <input type="text" placeholder="Enter task details"
+                            class="w-full h-[75px] px-4 py-2 mt-2 rounded-lg bg-input border text-black font-bold shadow-xl shadow-gray-500 hover:shadow-lg transition duration-300 active:scale-90">
+                    </div>
+                    <div class="h-[200px] w-[calc(50%-1rem)] bg-indigo-200 rounded-xl p-4 mb-4">
+                        <h3 class="text-2xl font-bold text-black mb-10">Task Title</h3>
+                        <input type="text" placeholder="Enter task details"
+                            class="w-full h-[75px] px-4 py-2 mt-2 rounded-lg bg-input border text-black font-bold shadow-xl shadow-gray-500 hover:shadow-lg transition duration-300 active:scale-90">
+                    </div>
+                </div>
+            </section>
+            <section class="hidden inside-section bg-primary min-h-screen w-full absolute top-0 left-0">
+                <button id="2"
+                    class="close-btn absolute top-4 right-4 bg-red-500 text-white text-xl px-12 py-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 active:scale-90 active:bg-red-600">Close</button>
+                <h1 class="text-6xl font-bold">Motivation</h1>
+            </section>
+            <section class="hidden inside-section bg-primary min-h-screen w-full absolute top-0 left-0">
+                <button id="3"
+                    class="close-btn absolute top-4 right-4 bg-red-500 text-white text-xl px-12 py-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 active:scale-90 active:bg-red-600">Close</button>
+                <h1 class="text-6xl font-bold">Pomodoro</h1>
+            </section>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
