@@ -84,3 +84,7 @@ if (localStorage.getItem("task")) {
 };
 todoTask();
 
+var hours =  Array.from({length :18 },(_,index) => {
+    return index + 7;
+})
+console.log(hours);
