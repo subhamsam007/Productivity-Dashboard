@@ -84,7 +84,27 @@ if (localStorage.getItem("task")) {
 };
 todoTask();
 
-var hours =  Array.from({length :18 },(_,index) => {
-    return index + 7;
+var hours = Array.from({ length: 18 }, (_, index) => {
+    let startHour = (index + 14) % 24;
+    let endHour = (startHour + 1) % 24;
+    return `${String(startHour).padStart(2, '0')}:00 - ${String(endHour).padStart(2, '0')}:00`;
+});
+
+var wholeDay = ""
+
+hours.forEach((elem,input_id) =>{
+    wholeDay+= `<div class=" Daily-box h-[200px] w-[calc(50%-1rem)] bg-indigo-200 rounded-xl p-4 mb-8">
+                        <h3 class="text-2xl font-bold text-black mb-10">Task Title</h3>
+                        <p>${elem}</P>
+                        <input id=${input_id} type="text" placeholder="Enter task details"
+                            class="w-full h-[75px] px-4  mb-4 rounded-lg bg-input border text-black font-bold shadow-xl shadow-gray-500 hover:shadow-lg transition duration-300 active:scale-90">
+                    </div>`
+});
+document.querySelector(".Daily-plan").innerHTML=wholeDay
+
+var inputID=document.querySelectorAll(".Daily-plan input");
+inputID.forEach((info) =>{
+    info.addEventListener("input",function(){
+        console.log(info.value)
+    })
 })
-console.log(hours);
