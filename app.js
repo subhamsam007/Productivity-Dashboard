@@ -17,7 +17,7 @@ function openFunction() {
 openFunction();
 
 function todoTask () {
- const formTododo = document.querySelector(".todo-form");
+const formTododo = document.querySelector(".todo-form");
 const formInput = document.querySelector(".todo-form-input");
 const taskDetails = document.querySelector(".todo-form-text");
 
@@ -84,27 +84,40 @@ if (localStorage.getItem("task")) {
 };
 todoTask();
 
-var hours = Array.from({ length: 18 }, (_, index) => {
-    let startHour = (index + 14) % 24;
+function dailyPlanner(){
+    var hours = Array.from({ length: 18 }, (_, index) => {
+    let startHour = (index + 6) % 24;
     let endHour = (startHour + 1) % 24;
     return `${String(startHour).padStart(2, '0')}:00 - ${String(endHour).padStart(2, '0')}:00`;
 });
+console.log(hours)
+
+var dayMemory = JSON.parse(localStorage.getItem("dayMemory"))||{}
 
 var wholeDay = ""
 
 hours.forEach((elem,input_id) =>{
     wholeDay+= `<div class=" Daily-box h-[200px] w-[calc(50%-1rem)] bg-indigo-200 rounded-xl p-4 mb-8">
-                        <h3 class="text-2xl font-bold text-black mb-10">Task Title</h3>
-                        <p>${elem}</P>
-                        <input id=${input_id} type="text" placeholder="Enter task details"
-                            class="w-full h-[75px] px-4  mb-4 rounded-lg bg-input border text-black font-bold shadow-xl shadow-gray-500 hover:shadow-lg transition duration-300 active:scale-90">
+                        <h3 class="text-2xl font-bold text-black mb-2">Task Title</h3>
+                        <p class="text-black text-4xl font-bold">${elem}</P>
+                        <input id=${input_id} type="text" placeholder="...." value="${dayMemory[input_id] || ''}"
+                            class="w-full h-[75px] px-4 text-6xl  mb-4 rounded-lg bg-indigo-400 border text-black font-bold shadow-xl shadow-gray-500 hover:shadow-lg transition duration-300 active:scale-90 outline-2">
                     </div>`
 });
 document.querySelector(".Daily-plan").innerHTML=wholeDay
 
 var inputID=document.querySelectorAll(".Daily-plan input");
-inputID.forEach((info) =>{
+// Set input values from dayMemory after rendering
+inputID.forEach((info) => {
+    // if (dayMemory[info.id]) {
+    //     info.value = dayMemory[info.id];
+    // }
     info.addEventListener("input",function(){
-        console.log(info.value)
+        dayMemory[info.id] = info.value
+        localStorage.setItem('dayMemory',JSON.stringify(dayMemory))
     })
 })
+
+
+};
+dailyPlanner();
