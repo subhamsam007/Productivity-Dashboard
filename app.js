@@ -121,3 +121,4 @@ inputID.forEach((info) => {
 
 };
 dailyPlanner();
+
