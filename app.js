@@ -90,7 +90,7 @@ function dailyPlanner(){
     let endHour = (startHour + 1) % 24;
     return `${String(startHour).padStart(2, '0')}:00 - ${String(endHour).padStart(2, '0')}:00`;
 });
-console.log(hours)
+
 
 var dayMemory = JSON.parse(localStorage.getItem("dayMemory"))||{}
 
@@ -122,3 +122,11 @@ inputID.forEach((info) => {
 };
 dailyPlanner();
 
+
+ async function animeQuotes(){
+    let response = await fetch ("https://api.animechan.io/v1/quotes/random")
+    let data = await response.json();
+    console.log(data.quote);
+}
+
+animeQuotes();
